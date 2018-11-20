@@ -9,9 +9,11 @@ const app = express(); //You'll be calling your app quite a bit! Have fun! (not)
 
 //Summon the HTML page.
 app.get("/", function (req, res) {
-    let doc = fs.readFileSync(".html/index.html", "utf-8");
+    let doc = fs.readFileSync("html/index.html", "utf-8");
     let dom = new JSDOM(doc);
-    let $ = require("jquery")(dom.window);*/
+    let $ = require("jquery")(dom.window); //JQuery
+    
+    res.send(dom.serialize());
 });
 
 //404 Error
