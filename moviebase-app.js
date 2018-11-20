@@ -19,10 +19,10 @@ app.get("/", function (req, res) {
 //404 Error
 app.use(function (req, res, next) {
   res.status(404).send("<html><head><title>Page not found!</title></head><body><p>There are no movies to speak of here...</p></body></html>");
-})
+});
 
 //Summon the server!
 let port = 8000;
 app.listen(port, function () {
     console.log('MovieBase listening on port ' + port + '!');
-})
+});
