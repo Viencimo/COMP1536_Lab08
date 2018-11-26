@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Deluxe Theater Listings</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+  <style type="text/css">
+
+    body {
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    ul {
+      padding: 0;
+    }
+
+    #header {
+      height: 100px;
+      background-color: rgb(170, 37, 0);
+    }
+
+    #title {
+      height: 100%;
+      width: 35%;
+      float: left;
+    }
+
+    #theater {
+      font-size: 36pt;
+      color: white;
+      font-family: sans-serif;
+      text-shadow: 1px 1px 2px black;
+      display: inline-block;
+      position: relative;
+      top: 50%;
+      transform: translate(10%, -50%);
+      float: left;
+    }
+
+    #menus {
+      height: 400px;
+      width: 65%;
+      float: right;
+    }
+
+    #buttons {
+      height: 100px;
+      width: 100%;
+      float: right;
+      text-align: center;
+    }
+
+    #movies {
+      display: none;
+    }
+
+    .movieButton {
+      position: relative;
+      color: white;
+      font-family: sans-serif;
+      text-shadow: 1px 1px 2px black;
+      top: 50%;
+      transform: translate(0, -50%);
+      padding: 10px;
+      width: 83px;
+      text-align: center;
+      display: inline-block;
+    }
+
+
+
+    .movieButton:hover {
+      color: rgb(50, 255, 50);
+      cursor: pointer;
+    }
+
+    #main {
+      z-index: 1;
+      height: calc(100vh - 100px);
+      width: 100vw;
+      position: fixed;
+    }
+
+    #main:before {
+      content: "";
+      background-image: url("./images/theater.jpg");
+      background-size: 100% 100%;
+      filter: brightness(50%);
+      height: calc(100vh - 100px);
+      width: 100vw;
+      z-index: -1;
+      position: fixed;
+    }
+
+    #mainContent {
+      width: 80%;
+      height: 60%;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      display: inline-block;
+      text-align: center;
+      z-index: 5;
+    }
+
+    .header {
+      font-size: 36pt;
+      color: white;
+      font-family: sans-serif;
+      text-shadow: 1px 1px 2px black;
+      margin: 0;
+    }
+
+    .content {
+      font-size: 18pt;
+      color: white;
+      font-family: sans-serif;
+      text-shadow: 1px 1px 2px black;
+      margin: 0;
+      display: inline-block;
+    }
+
+    #welcome2 {
+      display: none;
+    }
+
+    #line {
+      width: 40%;
+      height: 5px;
+      background-color: white;
+      display: inline-block;
+      margin: 0 auto;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      border-radius: 2px;
+
+    }
+
+    #select {
+      display: block;
+    }
+
+    #list {
+      display: block;
+    }
+
+    #dropdownMenu {
+      position: absolute;
+      display: inline-block;
+      min-width: 160px;
+    }
+
+    #test {
+      position: absolute;
+      right: 22%;
+    }
+
+    #sidebar {
+      background-color: red;
+      height: calc(20vh - 100px);
+      width: 100px;
+      right: 0;
+      position: fixed;
+      z-index: 500;
+
+    }
+
+
+/*
+    .dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 9999;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    z-index: 1000;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+*/
+
+
+
+
+
+
+
+    @media screen and (max-width: 950px) {
+      #theater {
+        width: 200px;
+      }
+
+      #title {
+        width: 30%;
+      }
+
+      #menus {
+        width: 70%;
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+
+      .b {
+        display: none;
+      }
+
+      #movieText {
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      }
+
+      #movies {
+      position: relative;
+      display: inline-block;
+      z-index: 600;
+      }
+
+      #movieContent {
+          display: none;
+          position: absolute;
+          background-color: #f9f9f9;
+          min-width: 160px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          z-index: 600;
+      }
+
+      #movieContent span {
+          color: black;
+          padding: 12px 16px;
+          text-decoration: none;
+          display: block;
+          z-index: 601;
+          text-shadow: none;
+      }
+
+      #movieContent span:hover {background-color: #f1f1f1}
+/*
+      #movies:hover #movieContent {
+          display: block;
+      }
+*/
+    }
+
+    @media screen and (max-width: 440px) {
+      #welcome {display: none;}
+
+      #welcome2 {display: block;}
+    }
+
+    @media screen and (max-width: 400px) {
+
+      .header {
+        font-size: 28pt;
+      }
+
+      .content {
+        font-size: 14pt;
+      }
+
+      #mainContent {
+        width: 100%;
+      }
+
+      #title {
+        display: none;
+      }
+
+      #menus {
+        width: 100%;
+      }
+
+
+    }
+  </style>
+  <body>
+    <div id='header'>
+      <div id='title'>
+        <span id='theater'>Deluxe Theater</span>
+      </div>
+      <div id='menus'>
+
+
+        <div id='buttons'>
+          <span class='movieButton' id='home'>Home</span>
+          <div class='movieButton' id='movies'>
+            <span id='movieText'>Movies</span>
+            <div id='movieContent'>
+              <span id='menuG'>G-rated</span>
+              <span id='menuPG'>PG-rated</span>
+              <span id='menuPG13'>PG13-rated</span>
+              <span id='menuR'>R-rated</span>
+            </div>
+          </div>
+          <span class='movieButton b' id='g'>G-rated</span>
+          <span class='movieButton b' id='pg'>PG-rated</span>
+          <span class='movieButton b' id='pg13'>PG13-rated</span>
+          <span class='movieButton b' id='r'>R-rated</span>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+
+    <div id='main'>
+      <div id='mainContent'>
+        <h1 id='welcome' class='header'>Welcome to Deluxe Theater Listings!</h1>
+        <p id='welcome2' class='header'>Welcome!</p>
+        <div id='line'></div>
+        <p id='select' class='content'>Please select a movie category.</p>
+
+      </div>
+
+    </div>
+
+
+
+
+
+  <script>
+  $(document).ready(function(){
+
+    $("#home").click(function(){
+      showHome();
+    });
+
+    $("#g").click(function(){
+      showG();
+    });
+
+    $("#menuG").click(function() {
+      showG();
+    })
+
+    $("#movies").click(function(){
+      $("#movieContent").toggle(200);
+    });
+
+    var line = $("<div id='line'></div>");
+
+    function showHome() {
+      let welcome = $("<h1 id='welcome' class='header'>Welcome to Deluxe Theater Listings!</h1>");
+      let welcome2 = $("<p id='welcome2' class='header'>Welcome!</p>");
+      let select = $("<p id='select' class='content'>Please select a movie category.</p>");
+
+      $("#mainContent").fadeOut(500);
+      setTimeout(function(){
+        $("#mainContent").empty();
+        $("#mainContent").append(welcome);
+        $("#mainContent").append(welcome2);
+        $("#mainContent").append(line);
+        $("#mainContent").append(select);
+        $("#mainContent").fadeIn(500);
+      }, 500)
+    }
+
+    function showG() {
+      let listTitle = $("<h1 id='listTitle' class='header'>G-rated Movie Showings</h1>");
+      let list = $("<ul id='list' class='content'></ul>");
+      let movie1 = $("<p>Huggy Bears: 1130 - 1330, 1530 - 1730</p>");
+
+      $("#mainContent").fadeOut(500);
+      setTimeout(function(){
+        $("#mainContent").empty();
+        $("#mainContent").append(listTitle);
+        $("#mainContent").append(line);
+        $("#mainContent").append(list);
+        $("#list").append(movie1);
+        $("#mainContent").fadeIn(500);
+      }, 500)
+
+
+
+    }
+
+
+
+  })
+  </script>
+  </body>
+</html>
