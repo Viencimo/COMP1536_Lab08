@@ -1,10 +1,17 @@
-let movie1 = ["The Incredibles 2", "9 / 10"]
-let movie2 = ["The Revenant", "10 / 10"]
-let movie3 = ["IT", "8 / 10"]
-let movie4 = ["Minions", "4 / 10"]
-let movie5 = ["The Room", "12 / 10"]
-let movie6 = ["Wreck It Ralph", "9 / 10"]
-let movie7 = ["Pixels", "3 / 10"]
-let movie8 = ["The Hunger Games", "7 / 10"]
-let movie9 = ["Cabin in the Woods", "7 / 10"]
-let movie10 = ["Harry Potter and the Portrait of What Looked Like a Pile of Ash", "10 / 10"]
+let movieHTML = "<ul><li>1. Iron Man</li><li>2. Thor</li><li>3. Captain America</li><li>4. Black Panther</li><li>5. The Avengers</li><li>6. Deadpool</li><li>7. Captain Marvel</li><li>8. Ant-Man</li><li>9. Guardians of the Galaxy</li><li>10. Super Thanos Kills Everyone in The Universe Ultimate Edition w/ Wrath of the Lamb DLC and Horse Armor Preorder Bonus & Knuckles Featuring Dante from the Devil May Cry Series</li></ul>";
+
+let movieJSON = ["The Incredibles 2", "The Revenant", "IT", "Minions", "The Room", "Wreck It Ralph", "Pixels", "The Hunger Games", "Cabin in the Woods", "Harry Potter and the Absurdly Long Title of Little Importance"]
+
+//Not quite sure what this does yet...
+module.exports = {
+  getHTML: function () {
+      console.log("called: getHTML");
+      // Note: this could be from a DB, for now it's just hard-coded
+      return someData;
+  },
+  getJSON: function () {
+      console.log("called: getJSON");
+      // Note: this could be from a DB, for now it's just hard-coded
+      return someOtherData;
+  }
+};
