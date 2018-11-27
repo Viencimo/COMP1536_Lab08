@@ -12,18 +12,20 @@ app.get("/", function (req, res) {
     let doc = fs.readFileSync("html/index.html", "utf-8");
     let dom = new JSDOM(doc);
     let $ = require("jquery")(dom.window); //JQuery
-    
+
     res.send(dom.serialize());
 });
 
 app.use('/js', express.static('js'));
+app.use('/html', express.static('html'));
+
 
 //Get the list. Checks what type the list is based on what's calling it.
 app.get('/ajax-GET-list', function (req, res) {
-    
+
     let responseFormat = req.query['format']; //Takes the format of what's calling it.
     let dataList = null;
-    
+
     //Check datatype.
     if (responseFormat == 'list-html') {
         res.setHeader('Content-Type', 'text/html'); //Headers are mysterious. Query about this?
