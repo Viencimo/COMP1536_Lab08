@@ -16,6 +16,8 @@ app.get("/", function (req, res) {
     res.send(dom.serialize());
 });
 
+app.use('/js', express.static('js'));
+
 //Get the list. Checks what type the list is based on what's calling it.
 app.get('/ajax-GET-list', function (req, res) {
     
