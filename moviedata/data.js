@@ -2,16 +2,16 @@ let movieHTML = "<ul><li>1. Iron Man</li><li>2. Thor</li><li>3. Captain America<
 
 let movieJSON = ["The Incredibles 2", "The Revenant", "IT", "Minions", "The Room", "Wreck It Ralph", "Pixels", "The Hunger Games", "Cabin in the Woods", "Harry Potter and the Absurdly Long Title of Little Importance"]
 
-//Not quite sure what this does yet...
+//We're basically running these functions upon call.
 module.exports = {
   getHTML: function () {
       console.log("called: getHTML");
       // Note: this could be from a DB, for now it's just hard-coded
-      return someData;
+      return movieHTML;
   },
   getJSON: function () {
       console.log("called: getJSON");
       // Note: this could be from a DB, for now it's just hard-coded
-      return someOtherData;
+      return movieJSON;
   }
 };

@@ -11,7 +11,7 @@ $(document).ready(function() {
         url: "/ajax-GET-list",
         dataType: "html",
         type: "GET",
-        data: {format: "list-html"}, //Used in the app itself to determine what sort of list it is.
+        data: {format: "html-list"}, //Used in the app itself to determine what sort of list it is.
         
         //Do this if all is well.
         success: function(data) {
@@ -40,7 +40,7 @@ $(document).ready(function() {
         url: "/ajax-GET-list",
         dataType: "json",
         type: "GET",
-        data: {format: "list-json"}, //Used in the app itself to determine what sort of list it is.
+        data: {format: "json-list"}, //Used in the app itself to determine what sort of list it is.
         
         //Do this if all is well.
         success: function(data) {
@@ -53,7 +53,7 @@ $(document).ready(function() {
                 newList += "<li>" + data[i] + "</li>";
             }
             newList += "</ul>"; //Cap off the list.
-            target.html(htmlStr);
+            target.html(newList);
         },
         
         //Do this if all is whatever the opposite of "well" is.
