@@ -25,20 +25,33 @@ app.get('/ajax-GET-list', function (req, res) {
 
     let responseFormat = req.query['format']; //Takes the format of what's calling it.
     let dataList = null;
+<<<<<<< HEAD
 
+=======
+    console.log("responseFormat: ", responseFormat);
+    
+>>>>>>> 7ea733a25d24b0690c4e67adb478704334412874
     //Check datatype.
-    if (responseFormat == 'list-html') {
+    if (responseFormat == 'html-list') {
+        console.log("HTML LIST");
         res.setHeader('Content-Type', 'text/html'); //Headers are mysterious. Query about this?
         dataList = lists.getHTML(); //Reference data.js.
         res.send(dataList); //Looks kinda like a return function.
-    } else if (responseFormat == 'list-json') {
+    } else if (responseFormat == 'json-list') {
+        console.log("JSON LIST");
         res.setHeader('Content-Type', 'application/json');
         dataList = lists.getJSON(); //Reference data.js.
-        res.rend(dataList); //Return what's in dataList.
+        res.send(dataList); //Return what's in dataList.
     } else {
         res.send({msg: 'Wrong format!'}); //Return the system being angry.
     }
 });
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 //404 Error
 app.use(function (req, res, next) {
