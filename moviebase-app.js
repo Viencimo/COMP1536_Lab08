@@ -25,12 +25,7 @@ app.get('/ajax-GET-list', function (req, res) {
 
     let responseFormat = req.query['format']; //Takes the format of what's calling it.
     let dataList = null;
-<<<<<<< HEAD
-
-=======
     console.log("responseFormat: ", responseFormat);
-    
->>>>>>> 7ea733a25d24b0690c4e67adb478704334412874
     //Check datatype.
     if (responseFormat == 'html-list') {
         console.log("HTML LIST");
